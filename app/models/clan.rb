@@ -1,3 +1,3 @@
 class Clan < ApplicationRecord
-  belongs_to :player
+  has_many :player
 end
