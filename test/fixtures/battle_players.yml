@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player: one
+  battle: one
+  battle_date: 2020-03-10 12:10:32
+
+two:
+  player: two
+  battle: two
+  battle_date: 2020-03-10 12:10:32

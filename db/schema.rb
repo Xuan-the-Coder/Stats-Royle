@@ -10,15 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_030143) do
+ActiveRecord::Schema.define(version: 2020_03_10_172316) do
+
+  create_table "battle_players", force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "battle_id", null: false
+    t.datetime "battle_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["battle_id"], name: "index_battle_players_on_battle_id"
+    t.index ["player_id"], name: "index_battle_players_on_player_id"
+  end
 
   create_table "battles", force: :cascade do |t|
     t.integer "battle_id"
     t.string "type"
     t.string "deck_selection"
-    t.datetime "battle_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.string "name"
+    t.integer "card_id"
+    t.string "icon_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_cards_on_player_id"
   end
 
   create_table "clans", force: :cascade do |t|
@@ -44,6 +63,9 @@ ActiveRecord::Schema.define(version: 2020_03_10_030143) do
     t.index ["clan_id"], name: "index_players_on_clan_id"
   end
 
+  add_foreign_key "battle_players", "battles"
+  add_foreign_key "battle_players", "players"
+  add_foreign_key "cards", "players"
   add_foreign_key "clans", "players"
   add_foreign_key "players", "clans"
 end
