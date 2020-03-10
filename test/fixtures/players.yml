@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tag: MyString
+  clan: one
+  role: MyString
+  wins: 1
+  losses: 1
+  total_donations: 1
+  current_deck: MyString
+
+two:
+  tag: MyString
+  clan: two
+  role: MyString
+  wins: 1
+  losses: 1
+  total_donations: 1
+  current_deck: MyString
