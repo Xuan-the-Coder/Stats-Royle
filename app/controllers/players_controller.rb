@@ -1,6 +1,9 @@
 class PlayersController < ApplicationController
   def index
-    @students = Student.order(:name)
+    @players = Player.order(:name)
   end
 
+  def show
+    @players = Player.find(params[:id])
+  end
 end
