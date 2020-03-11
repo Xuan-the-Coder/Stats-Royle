@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
+  root to: 'clan#index'
   get 'players/index'
-  resources :players, only: :show
-  resources :clans, only: :show
-  resources :battles, only: :show
-  resources :locations, only: :show
-  resources :decks, only: :show
+  resources "players", only: %i[index show]
+  resources "clans", only: %i[index show]
+  resources "battles", only: %i[index show]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'player#index'
+
 end
