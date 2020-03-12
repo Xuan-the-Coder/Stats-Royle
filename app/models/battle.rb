@@ -1,4 +1,4 @@
 class Battle < ApplicationRecord
-  has_many :player, through: :battle_player
-  validates :game_mode, :deck_selection, presence: true
+  has_many :players, through: :battle_players
+  validates :game_mode, :opponent, presence: true
 end

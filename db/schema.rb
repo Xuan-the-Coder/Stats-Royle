@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_053509) do
+ActiveRecord::Schema.define(version: 2020_03_12_185443) do
 
   create_table "battle_players", force: :cascade do |t|
     t.integer "player_id", null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_053509) do
     t.string "game_mode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "deck_selection"
+    t.string "opponent"
   end
 
   create_table "clans", force: :cascade do |t|

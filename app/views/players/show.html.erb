@@ -1,1 +1,18 @@
 <h2><%= @player.name %></h2>
+
+<p>
+  This player belongs to clan <%= link_to @player.clan.name, @player.clan %>.
+</p>
+
+<h3>Battle Records</h3>
+
+<% if @player.battles.empty? %>
+  <p><%= @player.name %> has no battle played.</p>
+<% else %>
+  <p>Here are the battles <%= @player.name %> played: </p>
+  <ul>
+    <% @player.battles.each do |battle| %>
+      <li><%= link_to battle.name, teacher %></li>
+    <% end %>
+  </ul>
+<% end %>

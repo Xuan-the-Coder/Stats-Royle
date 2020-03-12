@@ -8,12 +8,14 @@
 require 'net/http'
 require 'uri'
 
-Clan.destroy_all
-Player.destroy_all
-Battle.destroy_all
 BattlePlayer.destroy_all
+Battle.destroy_all
+Player.destroy_all
+Clan.destroy_all
 
-uri = URI.parse("https://api.clashroyale.com/v1/clans?locationId=57000047&limit=5")
+NUMBER_OF_BATTLE = 10
+
+uri = URI.parse("https://api.clashroyale.com/v1/clans?locationId=57000047&limit=20")
 request = Net::HTTP::Get.new(uri)
 request["Accept"] = "application/json"
 request["Authorization"] = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImU1MjNlYzMzLWVkMTYtNDQ1NC05MDZkLTVlZjA3MWQ0YWM0MCIsImlhdCI6MTU4Mzg2OTIyNCwic3ViIjoiZGV2ZWxvcGVyL2M4NTk0ODQ2LWQxYTctYjg2NS01OTNhLTVhOGVkYWVhNjZlYSIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxOTguMTYzLjE1MC4xMSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.Cdj6W8oNkMsFug0Efmhd-luNDZvVMHK423LPzLZMFIuIZr6HjZ2bdoUS8__r7XyKiCGsB1r1h6bAFf_mrRrruA"
@@ -58,34 +60,19 @@ clans.each do | clan |
     player_name = member[:name].force_encoding("UTF-8")
     player_role = member[:role]
     player = clan.players.create(tag: player_tag, name: player_name, role: player_role)
+  end
 
-    uri = URI.parse("https://api.clashroyale.com/v1/players/%23#{player_tag[1,8]}/battlelog")
-    request = Net::HTTP::Get.new(uri)
-    request["Accept"] = "application/json"
-    request["Authorization"] = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImU1MjNlYzMzLWVkMTYtNDQ1NC05MDZkLTVlZjA3MWQ0YWM0MCIsImlhdCI6MTU4Mzg2OTIyNCwic3ViIjoiZGV2ZWxvcGVyL2M4NTk0ODQ2LWQxYTctYjg2NS01OTNhLTVhOGVkYWVhNjZlYSIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxOTguMTYzLjE1MC4xMSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.Cdj6W8oNkMsFug0Efmhd-luNDZvVMHK423LPzLZMFIuIZr6HjZ2bdoUS8__r7XyKiCGsB1r1h6bAFf_mrRrruA"
-
-    req_options = {
-      use_ssl: uri.scheme == "https",
-    }
-
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(request)
-    end
-    if response.body = 'null'
-      info = nil
-    else
-      info = eval(response.body)
-      info.each do | battle |
-        game_mode = battle[:gameMode][:name]
-        puts game_mode
-        deck_selection = battle[:deckSelection]
-        puts deck_selection
-        battle = Battle.create(game_mode: game_mode, deck_selection: deck_selection)
-        BattlePlayer.create(player: player, battle: battle, battle_date: Faker::Time.forward(days: 50, period: :morning))
-      end
+  players = Player.all
+  players.each do |player|
+    NUMBER_OF_BATTLE.times do
+      battle = Battle.create(game_mode: Faker::Game.genre, opponent: Faker::Games::Witcher.character)
+      BattlePlayer.create(player: player, battle: battle, battle_date: Faker::Time.forward(days: 50, period: :morning))
     end
   end
 end
+
+puts "Created #{Battle.count} Houses."
+puts "Created #{BattlePlayer.count} Houses."
 
 
 
