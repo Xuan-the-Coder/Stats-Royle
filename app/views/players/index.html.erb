@@ -1,2 +1,13 @@
-<h1>All Players</h1>
-<p>Find me in app/views/players/index.html.erb</p>
+<h2>All Players</h2>
+<% if @players.empty? %>
+  <p>There are no player in the database.</p>
+<% else %>
+  <ul>
+    <% @playerss.each do |player| %>
+      <li>
+        <%= link_to student.name, student %>
+        of clan <%= link_to player.clan.name, player.clan %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

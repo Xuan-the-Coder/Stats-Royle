@@ -1,7 +1,14 @@
-<h1>Clans#index</h1>
-<p>Find me in app/views/clans/index.html.erb</p>
-<h3 class="title is-4">All Horse Breeds</h3>
-
-<h4>Members of this clan</h4>
-
-<%= render @clan.players%>
+<% if @clans.empty? %>
+  <p>There are no clans available.</p>
+<% else %>
+  <% @clans.each do |clan| %>
+    <h2><%= clan.name %></h2>
+    <p>
+      There are <%= clan.players.count %>
+      players in this clan.
+    </p>
+    <p>
+      Learn more about <%= link_to "clan #{clan.name}", clan %>.
+    </p>
+  <% end %>
+<% end %>

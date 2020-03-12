@@ -10,6 +10,37 @@
   </head>
 
   <body>
+    <header>
+      <h1>Stats Portal for Clash Royale</h1>
+      <p>
+        <%= link_to 'Home', root_path %> |
+        <%= link_to 'Students', students_path %> |
+        <%= link_to 'Teachers', teachers_path %> |
+        <%= link_to 'About Hogwart', permalink_path('about_hogwarts') %> |
+        <%= link_to 'Contact Us', permalink_path('contact') %>
+
+      </p>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+              <img src="https://en.wikipedia.org/wiki/Clash_Royale#/media/File:Clash_Royale_game_logo.png" width="112" height="28">
+            </a>
+          <!-- navbar items, navbar burger... -->
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <%= link_to 'Home', root_path %> |
+            <%= link_to 'Players', players_path %> |
+            <%= link_to 'Battles', battles_path %> |
+            <%= link_to 'About Stat Royale', permalink_path('about_hogwarts') %> |
+          </div>
+
+          <div class="navbar-end">
+            <!-- navbar items -->
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -1,5 +1,9 @@
 class ClansController < ApplicationController
   def index
-    @clan = Clan.all
+    @clans = Clan.order(:name)
+  end
+
+  def show
+    @clan = Clan.find(param[:id])
   end
 end
