@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'clan#index'
+  root to: 'clans#index'
   get 'players/index'
   resources "players", only: %i[index show]
   resources "clans", only: %i[index show]

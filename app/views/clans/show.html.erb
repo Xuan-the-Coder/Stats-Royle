@@ -1,6 +1,6 @@
 <h2><%= @clan.name %></h2>
 <p>
-  There are <%= @clan.palyers.count %>
+  There are <%= @clan.players.count %>
   players in this house.
 </p>
 
@@ -9,7 +9,7 @@
   <p>There are no player in this clan.</p>
 <% else %>
   <ul>
-    <% @clan.palyers.each do |player| %>
+    <% @clan.players.each do |player| %>
       <li><%= link_to player.name, player %></li>
     <% end %>
   </ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_184114) do
+ActiveRecord::Schema.define(version: 2020_03_12_053509) do
 
   create_table "battle_players", force: :cascade do |t|
     t.integer "player_id", null: false
@@ -23,38 +23,24 @@ ActiveRecord::Schema.define(version: 2020_03_11_184114) do
   end
 
   create_table "battles", force: :cascade do |t|
-    t.string "type"
+    t.string "game_mode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "deck_selection"
   end
 
-  create_table "cards", force: :cascade do |t|
-    t.integer "player_id", null: false
-    t.string "name"
-    t.integer "card_id"
-    t.string "icon_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["player_id"], name: "index_cards_on_player_id"
-  end
-
   create_table "clans", force: :cascade do |t|
     t.string "tag"
     t.string "name"
-    t.integer "player_id", null: false
     t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["player_id"], name: "index_clans_on_player_id"
   end
 
   create_table "players", force: :cascade do |t|
     t.string "tag"
     t.integer "clan_id", null: false
     t.string "role"
-    t.integer "total_donations"
-    t.string "current_deck"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
@@ -63,7 +49,5 @@ ActiveRecord::Schema.define(version: 2020_03_11_184114) do
 
   add_foreign_key "battle_players", "battles"
   add_foreign_key "battle_players", "players"
-  add_foreign_key "cards", "players"
-  add_foreign_key "clans", "players"
   add_foreign_key "players", "clans"
 end

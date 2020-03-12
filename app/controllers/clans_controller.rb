@@ -4,6 +4,6 @@ class ClansController < ApplicationController
   end
 
   def show
-    @clan = Clan.find(param[:id])
+    @clan = Clan.find(params[:id])
   end
 end
