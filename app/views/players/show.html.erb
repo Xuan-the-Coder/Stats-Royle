@@ -12,7 +12,7 @@
   <p>Here are the battles <%= @player.name %> played: </p>
   <ul>
     <% @player.battles.each do |battle| %>
-      <li><%= link_to battle.name, teacher %></li>
+      <li><%= link_to battle.id, battle %></li>
     <% end %>
   </ul>
 <% end %>

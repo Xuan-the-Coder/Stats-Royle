@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_185443) do
+ActiveRecord::Schema.define(version: 2020_03_12_194557) do
 
   create_table "battle_players", force: :cascade do |t|
     t.integer "player_id", null: false
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 2020_03_12_185443) do
     t.string "tag"
     t.string "name"
     t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "permalink"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

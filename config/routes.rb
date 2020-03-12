@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources "clans", only: %i[index show]
   resources "battles", only: %i[index show]
 
+  resources :pages
+
+  get ":permalink", to: "pages#permalink", as: "permalink"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

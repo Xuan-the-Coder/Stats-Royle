@@ -11,7 +11,7 @@
 
   <body>
     <header>
-      <h1>Stats Portal for Clash Royale</h1>
+      <h1 class="title is-1"><%= link_to 'Stats Royale', root_path %></h1>
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://bulma.io">
@@ -24,6 +24,7 @@
             <%= link_to 'Home', root_path %> |
             <%= link_to 'Players', players_path %> |
             <%= link_to 'Battles', battles_path %> |
+            <%= link_to 'About Stats Royale', permalink_path('about_us') %>
           </div>
 
           <div class="navbar-end">
@@ -32,6 +33,33 @@
         </div>
       </nav>
     </header>
+    <nav class="pagination" role="navigation" aria-label="pagination">
+      <a class="pagination-previous">Previous</a>
+      <a class="pagination-next">Next page</a>
+      <ul class="pagination-list">
+        <li>
+          <a class="pagination-link" aria-label="Goto page 1">1</a>
+        </li>
+        <li>
+          <span class="pagination-ellipsis">&hellip;</span>
+        </li>
+        <li>
+          <a class="pagination-link" aria-label="Goto page 45">45</a>
+        </li>
+        <li>
+          <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
+        </li>
+        <li>
+          <a class="pagination-link" aria-label="Goto page 47">47</a>
+        </li>
+        <li>
+          <span class="pagination-ellipsis">&hellip;</span>
+        </li>
+        <li>
+          <a class="pagination-link" aria-label="Goto page 86">86</a>
+        </li>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
