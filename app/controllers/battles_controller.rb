@@ -1,5 +1,9 @@
 class BattlesController < ApplicationController
   def index
-    @battle = Battle.all
+    @battles = Battle.all
+  end
+
+  def show
+    @battle = Battle.find(params[:id])
   end
 end
