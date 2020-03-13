@@ -11,10 +11,10 @@
 
   <body>
     <header>
-      <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a>
-            <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/Clash_Royale_game_logo.png" width="132" height="30">
+            <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/Clash_Royale_game_logo.png" width="102" height="23">
           </a>
 
           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -26,22 +26,29 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item"><%= link_to 'Home', root_path %> </a>
-            <a class="navbar-item"><%= link_to 'Players', players_path %> </a>
-            <a class="navbar-item"><%= link_to 'Battles', battles_path %> </a>
-            <a class="navbar-item"><%= link_to 'About Stats Royale', permalink_path('about_us') %></a>
-          </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
+            <a class="navbar-item" href ="/root">Home</a>
+            <a class="navbar-item" href ="/players">Players</a>
+            <a class="navbar-item" href ="/battles">Battles </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  About
                 </a>
-                <a class="button is-light">
-                  Log in
+                <a class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
                 </a>
               </div>
             </div>
+    </div>
+          </div>
           </div>
         </div>
       </nav>
