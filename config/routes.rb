@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :pages
 
   get ":permalink", to: "pages#permalink", as: "permalink"
+
+  get "search", to: "players#search", as: "search"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end
