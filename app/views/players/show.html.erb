@@ -1,8 +1,6 @@
-<h2><%= @player.name %></h2>
-
-<p>
-  This player belongs to clan <%= link_to @player.clan.name, @player.clan %>.
-</p>
+<div class="columns is-multiline">
+  <%= render @player %>
+</div>
 
 <h3>Battle Records</h3>
 
@@ -12,7 +10,44 @@
   <p>Here are the battles <%= @player.name %> played: </p>
   <ul>
     <% @player.battles.each do |battle| %>
-      <li><%= link_to battle.id, battle %></li>
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img src="https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png" alt="Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= @player.name %></strong>
+                <br>
+                <li><%= link_to battle.id, battle %></li>
+              </p>
+            </div>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item" aria-label="reply">
+                  <span class="icon is-small">
+                    <i class="fas fa-reply" aria-hidden="true"></i>
+                  </span>
+                </a>
+                <a class="level-item" aria-label="retweet">
+                  <span class="icon is-small">
+                    <i class="fas fa-retweet" aria-hidden="true"></i>
+                  </span>
+                </a>
+                <a class="level-item" aria-label="like">
+                  <span class="icon is-small">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+            </nav>
+          </div>
+        </article>
+      </div>
+
     <% end %>
   </ul>
 <% end %>

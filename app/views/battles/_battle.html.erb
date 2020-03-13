@@ -2,16 +2,16 @@
   <div class="card">
     <div class="card-content">
       <p class="title">
-        <%= link_to player.name, player %>
+        <%= link_to battle.name, battle %>
       </p>
-      <p>Clan: <%= link_to player.clan.name, player.clan %></p>
+      <p>Player: <%= link_to battle.player.name, battle.player %></p>
     </div>
     <footer class="card-footer">
       <p class="card-footer-item">
-        Tag: <%= player.tag %>
+        Game Mode: <%= battle.game_mode %>
       </p>
       <p class="card-footer-item">
-        Role: <%= player.role %>
+        Opponent: <%= battle.opponent %>
       </p>
     </footer>
   </div>

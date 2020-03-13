@@ -1,14 +1,12 @@
-<% if @clans.empty? %>
-  <p>There are no clans available.</p>
-<% else %>
-  <% @clans.each do |clan| %>
-    <h2><%= clan.name %></h2>
-    <p>
-      There are <%= clan.players.count %>
-      players in this clan.
-    </p>
-    <p>
-      Learn more about <%= link_to "clan #{clan.name}", clan %>.
-    </p>
-  <% end %>
+<h3 class="title is-4">All Clans in Clash Royale</h3>
+<% @clans.each do |clan| %>
+  <h2><%= clan.name %></h2>
+  <p>
+    There are <%= clan.players.count %>
+    players in this clan.
+  </p>
+  <p>
+    Learn more about <%= link_to "clan #{clan.name}", clan %>.
+  </p>
 <% end %>
+

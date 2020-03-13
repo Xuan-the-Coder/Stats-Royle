@@ -4,14 +4,6 @@
   players in this house.
 </p>
 
-<h3>Teachers in house <%= @clan.name %></h3>
-<% if @clan.players.empty? %>
-  <p>There are no player in this clan.</p>
-<% else %>
-  <ul>
-    <% @clan.players.each do |player| %>
-      <li><%= link_to player.name, player %></li>
-    <% end %>
-  </ul>
-<% end %>
+<h3>Players in house <%= @clan.name %></h3>
+<%= render @clan.players %>
 
