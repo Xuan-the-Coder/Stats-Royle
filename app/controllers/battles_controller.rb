@@ -1,6 +1,7 @@
 class BattlesController < ApplicationController
   def index
-    @battles = Battle.all
+    @battles = Battle.all.page(params[:page])
+
   end
 
   def show

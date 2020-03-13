@@ -1,6 +1,6 @@
 class ClansController < ApplicationController
   def index
-    @clans = Clan.order(:name)
+    @clans = Clan.order(:name).page(params[:page])
   end
 
   def show

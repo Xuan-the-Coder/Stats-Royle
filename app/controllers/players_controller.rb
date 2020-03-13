@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   def index
-    @players = Player.order(:name)
+    @players = Player.order(:name).page(params[:page])
   end
 
   def show

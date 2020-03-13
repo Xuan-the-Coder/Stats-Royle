@@ -1,4 +1,5 @@
 <h3 class="title is-4">All Clans in Clash Royale</h3>
+<%= paginate @clans %>
 <% @clans.each do |clan| %>
   <div class="box">
         <article class="media">
@@ -12,8 +13,9 @@
               <p>
                 <strong><%= link_to clan.name, clan %></strong>
                 <br>
-                <li>Country: <%=  clan.country %></li>
+
               </p>
+              <p>Country: <%=  clan.country %></p>
             </div>
             <nav class="level is-mobile">
               <div class="level-left">
@@ -39,4 +41,5 @@
       </div>
 </div>
 <% end %>
+<%= paginate @clans %>
 

@@ -4,11 +4,11 @@
       <p class="title">
         <%= link_to battle.id, battle %>
       </p>
-      <p>Player: <%= link_to player.name, player %></p>
+      <p>Game Mode: <%= battle.game_mode %></p>
     </div>
     <footer class="card-footer">
       <p class="card-footer-item">
-        Game Mode: <%= battle.game_mode %>
+        Battle Time: <%= battle.created_at %>
       </p>
       <p class="card-footer-item">
         Opponent: <%= battle.opponent %>
