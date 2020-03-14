@@ -8,7 +8,6 @@
   <p><%= @player.name %> has no battle played.</p>
 <% else %>
   <p>Here are the battles <%= @player.name %> played: </p>
-  <ul>
     <% @player.battles.each do |battle| %>
       <div class="box">
         <article class="media">
@@ -19,11 +18,9 @@
           </div>
           <div class="media-content">
             <div class="content">
-              <p>
-                <strong><%= @player.name %></strong>
+                <div><strong><%= @player.name %></strong></div>
                 <br>
-                <li><%= link_to battle.game_mode, battle %></li>
-              </p>
+                <div><%= link_to battle.game_mode, battle %></div>
             </div>
             <nav class="level is-mobile">
               <div class="level-left">
@@ -49,5 +46,4 @@
       </div>
 
     <% end %>
-  </ul>
 <% end %>

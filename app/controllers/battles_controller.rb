@@ -5,6 +5,6 @@ class BattlesController < ApplicationController
   end
 
   def show
-    @battle = Battle.find(params[:id])
+    @battle = Battle.find(params[:id]).page(params[:page])
   end
 end
